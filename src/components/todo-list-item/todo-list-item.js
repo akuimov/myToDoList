@@ -8,19 +8,23 @@ export default class TodoListItem extends Component {
     }
 
     onLabelClick = () => {
-        this.setState({
-            done: true
+        this.setState(({ done }) => {
+            return {
+                done: !done
+            }
         })
     }
 
     onMarkImportant = () => {
-        this.setState({
-            important: true
+        this.setState(({ important }) => {
+            return {
+                important: !important
+            }
         })
     }
 
     render() {
-        const { label } = this.props;
+        const { label, onDeleted } = this.props;
         const { done, important } = this.state;
         let ClassNames = 'row align-items-center todo-list-item';
 
@@ -36,7 +40,10 @@ export default class TodoListItem extends Component {
                     { label }
                 </span>
                 <span className="buttons-wrapper col-3 d-flex justify-content-between">
-                    <button className="btn btn-outline-danger">
+                    <button 
+                        className="btn btn-outline-danger"
+                        onClick={onDeleted}
+                    >
                         <i className="far fa-trash-alt"></i>
                     </button>
                     <button 
