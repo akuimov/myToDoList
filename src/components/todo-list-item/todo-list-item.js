@@ -2,9 +2,36 @@ import React, { Component }from 'react';
 import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
+<<<<<<< HEAD
 
     render() {
         const { label, onDeleted, onToggleImportant, onToggleDone, done, important } = this.props;
+=======
+    state = {
+        done: false,
+        important: false,
+    }
+
+    onLabelClick = () => {
+        this.setState(({ done }) => {
+            return {
+                done: !done
+            }
+        })
+    }
+
+    onMarkImportant = () => {
+        this.setState(({ important }) => {
+            return {
+                important: !important
+            }
+        })
+    }
+
+    render() {
+        const { label, onDeleted } = this.props;
+        const { done, important } = this.state;
+>>>>>>> 5accbcba860199f6d19826fd0b9fa79284e64b3e
         let ClassNames = 'row align-items-center todo-list-item';
 
         if (done) ClassNames += ' done';
